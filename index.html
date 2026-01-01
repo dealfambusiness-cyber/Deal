@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Hub | Marketplace</title>
+    <title>Business Hub Kerala | Multi-Service Marketplace</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -12,103 +12,135 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-slate-50 font-sans text-slate-900">
 
-    <nav class="bg-slate-900 text-white shadow-xl sticky top-0 z-50">
+    <nav class="bg-indigo-900 text-white shadow-2xl sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2 cursor-pointer" onclick="showPage('home')">
-                <i class="fas fa-briefcase text-yellow-500"></i>
-                <span class="text-xl font-bold tracking-wider">BUSINESS<span class="text-yellow-500">HUB</span></span>
+                <i class="fas fa-city text-yellow-400 text-2xl"></i>
+                <span class="text-xl font-black tracking-tighter">BIZ<span class="text-yellow-400">KERALA</span></span>
             </div>
-            <div class="hidden md:flex space-x-6">
-                <button onclick="showPage('home')" class="hover:text-yellow-500">Home</button>
-                <button onclick="showPage('services')" class="hover:text-yellow-500">All Services</button>
-                <button onclick="showPage('post')" class="hover:text-yellow-500">Post Requirement</button>
-                <button onclick="showPage('profile')" class="bg-yellow-500 text-black px-4 py-1 rounded font-bold">Profile</button>
+            <div class="hidden md:flex space-x-8 font-semibold text-sm uppercase">
+                <button onclick="showPage('home')" class="hover:text-yellow-400 transition">Home</button>
+                <button onclick="showPage('search-pro')" class="hover:text-yellow-400 transition">Find Services</button>
+                <button onclick="showPage('profile')" class="bg-yellow-400 text-indigo-900 px-5 py-2 rounded-full font-bold">My Profile</button>
             </div>
         </div>
     </nav>
 
-    <div class="container mx-auto px-4 py-8 max-w-5xl">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
 
         <section id="home" class="page-section active-section">
-            <h2 class="text-2xl font-bold mb-6 text-slate-800 text-center">ഒരു ബിസിനസിന് ആവശ്യമായ എല്ലാ സേവനങ്ങളും</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div onclick="showPage('services')" class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition text-center cursor-pointer border-b-4 border-indigo-500">
-                    <i class="fas fa-headset text-3xl text-indigo-600 mb-3"></i>
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-5xl font-black mb-4 text-slate-800">നിങ്ങളുടെ ബിസിനസ്സിനായി <br><span class="text-indigo-600 font-bold text-2xl md:text-4xl">ഏറ്റവും മികച്ച സർവീസുകൾ കണ്ടെത്തൂ</span></h1>
+                <p class="text-slate-500 max-w-2xl mx-auto italic">കേരളത്തിലുടനീളമുള്ള പ്രൊഫഷണലുകളെ നേരിട്ട് ബന്ധപ്പെടാം.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div onclick="openServiceSearch('Tele-Calling')" class="bg-white p-8 rounded-2xl shadow-sm border hover:border-indigo-500 hover:shadow-xl transition text-center cursor-pointer group">
+                    <i class="fas fa-headset text-4xl text-indigo-600 mb-4 group-hover:scale-110 transition"></i>
                     <h3 class="font-bold">Tele Calling</h3>
                 </div>
-                <div onclick="showPage('services')" class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition text-center cursor-pointer border-b-4 border-green-500">
-                    <i class="fas fa-user-tie text-3xl text-green-600 mb-3"></i>
-                    <h3 class="font-bold">Recruiting</h3>
+                <div onclick="openServiceSearch('Recruiting')" class="bg-white p-8 rounded-2xl shadow-sm border hover:border-indigo-500 hover:shadow-xl transition text-center cursor-pointer group">
+                    <i class="fas fa-user-tie text-4xl text-green-600 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">Staff Recruiting</h3>
                 </div>
-                <div onclick="showPage('services')" class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition text-center cursor-pointer border-b-4 border-yellow-500">
-                    <i class="fas fa-bullhorn text-3xl text-yellow-600 mb-3"></i>
-                    <h3 class="font-bold">Marketing</h3>
+                <div onclick="openServiceSearch('Graphic Designing')" class="bg-white p-8 rounded-2xl shadow-sm border hover:border-indigo-500 hover:shadow-xl transition text-center cursor-pointer group">
+                    <i class="fas fa-palette text-4xl text-pink-600 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">Graphic Designing</h3>
                 </div>
-                <div onclick="showPage('services')" class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition text-center cursor-pointer border-b-4 border-red-500">
-                    <i class="fas fa-truck text-3xl text-red-600 mb-3"></i>
-                    <h3 class="font-bold">Logistics</h3>
+                <div onclick="openServiceSearch('Accounting & Legal')" class="bg-white p-8 rounded-2xl shadow-sm border hover:border-indigo-500 hover:shadow-xl transition text-center cursor-pointer group">
+                    <i class="fas fa-balance-scale text-4xl text-amber-600 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">Accounting & Legal</h3>
                 </div>
-            </div>
-        </section>
-
-        <section id="services" class="page-section">
-            <h2 class="text-2xl font-bold mb-4">ലഭ്യമായ സേവനങ്ങൾ</h2>
-            <div class="space-y-4">
-                <div class="bg-white p-5 rounded-xl shadow border flex justify-between items-center">
-                    <div>
-                        <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-1 rounded">TELE-CALLING</span>
-                        <h4 class="font-bold text-lg mt-1">Sneha P.</h4>
-                        <p class="text-xs text-gray-500">Malayalam & English | 2 yrs Exp.</p>
-                    </div>
-                    <button onclick="alert('Deal Request Sent to Tele-caller!')" class="bg-slate-900 text-white px-6 py-2 rounded-lg font-bold">Deal</button>
+                <div onclick="openServiceSearch('Content Writing')" class="bg-white p-8 rounded-2xl shadow-sm border hover:border-indigo-500 hover:shadow-xl transition text-center cursor-pointer group">
+                    <i class="fas fa-pen-nib text-4xl text-blue-600 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">Content Writing</h3>
                 </div>
-                <div class="bg-white p-5 rounded-xl shadow border flex justify-between items-center">
-                    <div>
-                        <span class="text-[10px] bg-green-100 text-green-700 font-bold px-2 py-1 rounded">RECRUITING</span>
-                        <h4 class="font-bold text-lg mt-1">Prime Staffing Solutions</h4>
-                        <p class="text-xs text-gray-500">IT & Sales Recruiting Specialists</p>
-                    </div>
-                    <button onclick="alert('Deal Request Sent to Agency!')" class="bg-slate-900 text-white px-6 py-2 rounded-lg font-bold">Deal</button>
+                <div onclick="openServiceSearch('Digital Marketing')" class="bg-white p-8 rounded-2xl shadow-sm border hover:border-indigo-500 hover:shadow-xl transition text-center cursor-pointer group">
+                    <i class="fas fa-bullhorn text-4xl text-purple-600 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">Digital Marketing</h3>
                 </div>
             </div>
         </section>
 
-        <section id="post" class="page-section">
-            <div class="bg-white p-8 rounded-2xl shadow-lg border max-w-lg mx-auto">
-                <h2 class="text-xl font-bold mb-6 italic">ആവശ്യമുള്ള സേവനം പോസ്റ്റ് ചെയ്യുക</h2>
-                <div class="space-y-4">
-                    <input type="text" placeholder="എന്ത് സേവനമാണ് വേണ്ടത്? (ഉദാ: Tele-caller)" class="w-full p-3 border rounded-lg">
-                    <select class="w-full p-3 border rounded-lg">
-                        <option>Tele-calling</option>
-                        <option>Recruiting</option>
-                        <option>Marketing</option>
-                        <option>Delivery</option>
-                    </select>
-                    <textarea placeholder="കൂടുതൽ വിവരങ്ങൾ..." class="w-full p-3 border rounded-lg h-32"></textarea>
-                    <button onclick="alert('Requirement Posted!')" class="w-full bg-indigo-600 text-white py-3 rounded font-bold">POST NOW</button>
+        <section id="search-pro" class="page-section">
+            <div class="bg-white rounded-3xl shadow-xl border overflow-hidden mb-10">
+                <div class="bg-indigo-700 p-6 text-white">
+                    <h2 class="text-xl font-bold flex items-center"><i class="fas fa-map-marker-alt mr-3"></i> Find Professionals in your Area</h2>
+                </div>
+                <div class="p-8 grid grid-cols-1 md:grid-cols-3 gap-6 bg-slate-50">
+                    <div>
+                        <label class="block text-xs font-black text-slate-500 mb-2 uppercase">Service Type</label>
+                        <select id="selected-service" class="w-full p-3 border-2 rounded-xl outline-none focus:border-indigo-500">
+                            <option>Tele-Calling</option>
+                            <option>Graphic Designing</option>
+                            <option>Accounting & Legal</option>
+                            <option>Content Writing</option>
+                            <option>Staff Recruiting</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black text-slate-500 mb-2 uppercase">District</label>
+                        <select id="dist-select" class="w-full p-3 border-2 rounded-xl outline-none focus:border-indigo-500" onchange="updateLocalities()">
+                            <option value="all">Kerala (Overall)</option>
+                            <option value="tvm">Thiruvananthapuram</option>
+                            <option value="ekm">Ernakulam</option>
+                            <option value="koz">Kozhikode</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black text-slate-500 mb-2 uppercase">Locality (Panchayat/Mun/Corp)</label>
+                        <select id="loc-select" class="w-full p-3 border-2 rounded-xl outline-none focus:border-indigo-500">
+                            <option>District Overall</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="p-6 bg-white text-center">
+                    <button onclick="findProviders()" class="bg-indigo-600 text-white px-12 py-3 rounded-full font-bold hover:bg-indigo-800 shadow-lg transition transform active:scale-95">Search Providers</button>
+                </div>
+            </div>
+
+            <div id="results-area" class="hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-bold text-slate-700" id="result-title">Service Providers</h3>
+                    <button onclick="toggleSelectAll()" class="text-sm font-bold text-indigo-600 bg-indigo-50 px-4 py-2 rounded-lg">Select All Area Providers</button>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="provider-grid">
+                    </div>
+
+                <div class="mt-10 text-center bg-indigo-50 p-10 rounded-3xl border-2 border-dashed border-indigo-200">
+                    <h3 class="text-xl font-bold mb-4">Send Deal Request to Selected Providers</h3>
+                    <p class="text-sm text-slate-500 mb-6">നിങ്ങളുടെ പ്രൊപ്പോസൽ ഒരേസമയം എല്ലാവരിലേക്കും എത്തിക്കാം.</p>
+                    <button onclick="sendBulkRequest()" class="bg-indigo-700 text-white px-10 py-4 rounded-2xl font-black text-lg shadow-2xl hover:bg-black transition">SEND DEAL REQUEST 🚀</button>
                 </div>
             </div>
         </section>
 
         <section id="profile" class="page-section">
-            <div class="bg-white rounded-2xl shadow-xl p-8 max-w-md mx-auto text-center border">
-                <div class="w-20 h-20 bg-slate-200 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-bold">U</div>
-                <h2 class="text-xl font-bold">Business User</h2>
-                <p class="text-gray-400 text-sm mb-6">Trivandrum, Kerala</p>
-                
-                <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-200 mb-4">
-                    <p class="text-xs font-bold text-yellow-700 uppercase mb-2">Trustworthiness Rate</p>
-                    <div class="text-2xl text-yellow-500 mb-2">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="text-[10px] text-gray-500">Based on Community Feedback</p>
+            <div class="max-w-md mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden border">
+                <div class="bg-indigo-900 p-10 text-center text-white">
+                    <div class="w-24 h-24 bg-white text-indigo-900 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl font-black shadow-inner">B</div>
+                    <h2 class="text-2xl font-bold">Business User</h2>
+                    <p class="text-indigo-300 text-sm italic">Verified Business Profile</p>
                 </div>
-                
-                <div class="text-left text-sm space-y-3">
-                    <div class="flex justify-between border-b pb-1"><span>Contact:</span><span class="font-bold text-gray-400 italic">Hidden</span></div>
-                    <div class="flex justify-between border-b pb-1"><span>Services Taken:</span><span class="font-bold">08 Deals</span></div>
+                <div class="p-8">
+                    <div class="flex justify-around mb-8">
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-indigo-600">4.8</p>
+                            <p class="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Trust Rate</p>
+                        </div>
+                        <div class="text-center border-x px-8">
+                            <p class="text-2xl font-bold text-indigo-600">12</p>
+                            <p class="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Deals Done</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <button class="w-full text-left p-4 bg-slate-50 rounded-xl font-bold text-sm flex items-center"><i class="fas fa-shield-alt mr-3 text-indigo-500"></i> Trust Verification</button>
+                        <button class="w-full text-left p-4 bg-slate-50 rounded-xl font-bold text-sm flex items-center"><i class="fas fa-history mr-3 text-indigo-500"></i> Deal History</button>
+                        <button class="w-full text-left p-4 bg-red-50 text-red-600 rounded-xl font-bold text-sm flex items-center mt-6"><i class="fas fa-sign-out-alt mr-3"></i> Exit Profile</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -116,10 +148,74 @@
     </div>
 
     <script>
+        const localData = {
+            'tvm': ['District Overall', 'Vembayam Panchayat', 'Nedumangad Municipality', 'TVM Corporation', 'Attingal Municipality'],
+            'ekm': ['District Overall', 'Kochi Corporation', 'Aluva Municipality', 'Kalamassery Municipality', 'Vytila'],
+            'koz': ['District Overall', 'Kozhikode Corporation', 'Vatakara Municipality', 'Feroke Municipality'],
+            'all': ['Kerala Overall']
+        };
+
         function showPage(pageId) {
             document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active-section'));
             document.getElementById(pageId).classList.add('active-section');
             window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function openServiceSearch(serviceName) {
+            document.getElementById('selected-service').value = serviceName;
+            showPage('search-pro');
+        }
+
+        function updateLocalities() {
+            const dist = document.getElementById('dist-select').value;
+            const locSelect = document.getElementById('loc-select');
+            locSelect.innerHTML = '';
+            localData[dist].forEach(loc => {
+                const opt = document.createElement('option');
+                opt.value = loc;
+                opt.innerText = loc;
+                locSelect.appendChild(opt);
+            });
+        }
+
+        function findProviders() {
+            const service = document.getElementById('selected-service').value;
+            const loc = document.getElementById('loc-select').value;
+            const dist = document.getElementById('dist-select').options[document.getElementById('dist-select').selectedIndex].text;
+
+            document.getElementById('result-title').innerText = `${loc}, ${dist} - ലുള്ള ${service} Providers`;
+            document.getElementById('results-area').classList.remove('hidden');
+
+            const grid = document.getElementById('provider-grid');
+            grid.innerHTML = ''; // Clear old
+
+            // Dummy Providers
+            for(let i=1; i<=4; i++) {
+                grid.innerHTML += `
+                    <div class="bg-white p-5 rounded-2xl border shadow-sm flex justify-between items-center group hover:border-indigo-500 transition">
+                        <div class="flex items-center space-x-4">
+                            <input type="checkbox" class="w-5 h-5 accent-indigo-600 prov-cb" checked>
+                            <div>
+                                <h4 class="font-black text-slate-800 uppercase text-xs tracking-wider">Provider #${i}</h4>
+                                <p class="text-sm font-bold text-indigo-600">${service} Specialist</p>
+                                <p class="text-[10px] text-slate-400">Trust Rate: ⭐ 4.9</p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-bold bg-green-100 text-green-700 px-2 py-1 rounded">Available</span>
+                    </div>
+                `;
+            }
+            window.scrollTo({top: document.getElementById('results-area').offsetTop - 100, behavior: 'smooth'});
+        }
+
+        function toggleSelectAll() {
+            const cbs = document.querySelectorAll('.prov-cb');
+            cbs.forEach(cb => cb.checked = !cb.checked);
+        }
+
+        function sendBulkRequest() {
+            alert("നിങ്ങളുടെ ഡീൽ റിക്വസ്റ്റ് സെലക്ട് ചെയ്ത എല്ലാ സർവീസ് പ്രൊവൈഡർമാർക്കും അയച്ചിട്ടുണ്ട്! അവർ ഉടൻ നിങ്ങളെ ബന്ധപ്പെടും.");
+            showPage('home');
         }
     </script>
 </body>
