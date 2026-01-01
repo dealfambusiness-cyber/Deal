@@ -3,170 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BizKerala | Complete Business Ecosystem</title>
+    <title>BizKerala Ultimate | Pro Business Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .page-section { display: none; }
-        .active-section { display: block; animation: fadeIn 0.4s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        .glass-effect { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+        .active-section { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .ad-blink { animation: borderBlink 2s infinite; }
+        @keyframes borderBlink { 50% { border-color: #fbbf24; } }
     </style>
 </head>
-<body class="bg-gray-50 font-sans text-slate-900">
+<body class="bg-slate-50 font-sans text-slate-900">
 
-    <nav class="bg-indigo-900 text-white shadow-2xl sticky top-0 z-50 glass-effect border-b border-indigo-800">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+    <nav class="bg-indigo-900 text-white shadow-xl sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2 cursor-pointer" onclick="showPage('home')">
-                <div class="bg-yellow-400 p-2 rounded-lg text-indigo-900"><i class="fas fa-handshake text-xl"></i></div>
-                <span class="text-2xl font-black tracking-tighter uppercase">Biz<span class="text-yellow-400">Kerala</span></span>
+                <i class="fas fa-crown text-yellow-400 text-2xl"></i>
+                <span class="text-xl font-black italic">BIZ<span class="text-yellow-400">PRO</span></span>
             </div>
-            <div class="hidden md:flex space-x-6 font-bold text-xs uppercase tracking-widest">
-                <button onclick="showPage('home')" class="hover:text-yellow-400 transition">Marketplace</button>
-                <button onclick="showPage('search-pro')" class="hover:text-yellow-400 transition">Find Services</button>
-                <button onclick="showPage('post')" class="hover:text-yellow-400 transition text-yellow-400 border border-yellow-400 px-3 py-1 rounded">Post Job</button>
-                <button onclick="showPage('profile')" class="flex items-center space-x-2 hover:opacity-80"><i class="fas fa-user-circle text-xl"></i><span>Account</span></button>
+            <div class="hidden md:flex space-x-6 text-xs font-bold uppercase tracking-tighter">
+                <button onclick="showPage('home')">Home</button>
+                <button onclick="showPage('post-job')">AI Matchmaking</button>
+                <button onclick="showPage('tracking')">Staff Tracking</button>
+                <button onclick="showPage('subscription')">Plans</button>
+                <button onclick="showPage('profile')" class="bg-white text-indigo-900 px-4 py-1 rounded-full">My Account</button>
             </div>
         </div>
     </nav>
 
-    <div class="container mx-auto px-4 py-8 max-w-6xl">
+    <div class="container mx-auto px-4 py-6 max-w-6xl">
 
-        <section id="home" class="page-section active-section">
-            <div class="relative rounded-3xl overflow-hidden bg-indigo-700 text-white p-12 mb-10 text-center shadow-2xl">
-                <h1 class="text-4xl md:text-5xl font-black mb-4">നിങ്ങളുടെ ബിസിനസ്സ് വളർത്താൻ <br>വിശ്വസ്തരായ പാർട്ണർമാരെ കണ്ടെത്തൂ</h1>
-                <p class="text-indigo-100 mb-8 opacity-80">മാർക്കറ്റിംഗ് മുതൽ അക്കൗണ്ടിംഗ് വരെ, എല്ലാം ഒരിടത്ത്.</p>
-                <div class="max-w-xl mx-auto flex bg-white rounded-full p-2 text-slate-800 shadow-lg">
-                    <input type="text" placeholder="എന്ത് സേവനമാണ് വേണ്ടത്?" class="flex-grow bg-transparent px-4 outline-none">
-                    <button onclick="showPage('search-pro')" class="bg-yellow-400 px-6 py-2 rounded-full font-bold text-indigo-900">Search</button>
-                </div>
+        <div class="mb-8 p-4 bg-white border-2 border-dashed border-slate-200 rounded-2xl flex items-center justify-between ad-blink">
+            <div class="flex items-center space-x-4">
+                <span class="bg-yellow-400 text-[10px] font-bold px-2 py-0.5 rounded">AD</span>
+                <p class="text-sm font-bold">നിങ്ങളുടെ ബിസിനസ്സ് ഇവിടെ പ്രദർശിപ്പിക്കാം</p>
             </div>
+            <button onclick="showPage('subscription')" class="text-indigo-600 text-xs font-bold underline">Book Now</button>
+        </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                <div onclick="openServiceSearch('Tele-Calling')" class="bg-white p-6 rounded-2xl shadow-sm border hover:shadow-xl transition text-center cursor-pointer group">
-                    <i class="fas fa-phone-volume text-2xl text-indigo-500 mb-3 group-hover:scale-125 transition"></i>
-                    <h3 class="font-bold text-sm">Tele Calling</h3>
+        <section id="post-job" class="page-section active-section">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="md:col-span-2 bg-white p-8 rounded-3xl shadow-lg border">
+                    <h2 class="text-2xl font-black mb-6">പുതിയ പ്രൊഡക്റ്റ് പോസ്റ്റ് ചെയ്യുക</h2>
+                    <div class="space-y-4">
+                        <input type="text" id="p-name" placeholder="Product Name" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none">
+                        <textarea id="p-desc" placeholder="Details..." class="w-full p-4 bg-slate-50 border rounded-2xl h-24"></textarea>
+                        
+                        <div class="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+                            <h4 class="font-bold text-sm mb-2"><i class="fas fa-file-contract mr-2"></i>Digital Deal Contract</h4>
+                            <label class="flex items-start space-x-3 cursor-pointer">
+                                <input type="checkbox" checked class="mt-1 w-4 h-4 accent-indigo-600">
+                                <span class="text-xs text-slate-600">വിൽപ്പന നടത്തുന്ന ഓരോ ഉൽപ്പന്നത്തിനും കൃത്യം 10% കമ്മീഷൻ നൽകിക്കൊള്ളാമെന്ന് ഞാൻ സമ്മതിക്കുന്നു. (Transaction/Lead Fee applicable)</span>
+                            </label>
+                        </div>
+                        <button onclick="runAIMatch()" class="w-full bg-indigo-700 text-white py-4 rounded-2xl font-black shadow-lg">RUN AI MATCHMAKING 🤖</button>
+                    </div>
                 </div>
-                <div onclick="openServiceSearch('Staff Recruiting')" class="bg-white p-6 rounded-2xl shadow-sm border hover:shadow-xl transition text-center cursor-pointer group">
-                    <i class="fas fa-users text-2xl text-green-500 mb-3 group-hover:scale-125 transition"></i>
-                    <h3 class="font-bold text-sm">Recruiting</h3>
-                </div>
-                <div onclick="openServiceSearch('Graphic Designing')" class="bg-white p-6 rounded-2xl shadow-sm border hover:shadow-xl transition text-center cursor-pointer group">
-                    <i class="fas fa-bezier-curve text-2xl text-pink-500 mb-3 group-hover:scale-125 transition"></i>
-                    <h3 class="font-bold text-sm">Designing</h3>
-                </div>
-                <div onclick="openServiceSearch('Accounting & Legal')" class="bg-white p-6 rounded-2xl shadow-sm border hover:shadow-xl transition text-center cursor-pointer group">
-                    <i class="fas fa-file-invoice-dollar text-2xl text-amber-500 mb-3 group-hover:scale-125 transition"></i>
-                    <h3 class="font-bold text-sm">Accounting</h3>
-                </div>
-                <div onclick="openServiceSearch('Content Writing')" class="bg-white p-6 rounded-2xl shadow-sm border hover:shadow-xl transition text-center cursor-pointer group">
-                    <i class="fas fa-keyboard text-2xl text-blue-500 mb-3 group-hover:scale-125 transition"></i>
-                    <h3 class="font-bold text-sm">Writing</h3>
-                </div>
-                <div onclick="openServiceSearch('Marketing Executives')" class="bg-white p-6 rounded-2xl shadow-sm border hover:shadow-xl transition text-center cursor-pointer group">
-                    <i class="fas fa-bullseye text-2xl text-red-500 mb-3 group-hover:scale-125 transition"></i>
-                    <h3 class="font-bold text-sm">Marketing</h3>
+
+                <div id="ai-results" class="bg-indigo-900 text-white p-6 rounded-3xl shadow-xl hidden animate-pulse">
+                    <h3 class="font-bold mb-4 text-yellow-400"><i class="fas fa-magic mr-2"></i>AI നിർദ്ദേശിക്കുന്നത്:</h3>
+                    <p class="text-xs mb-6 opacity-80">നിങ്ങളുടെ പ്രൊഡക്റ്റ് വിൽക്കാൻ ഏറ്റവും അനുയോജ്യരായവർ:</p>
+                    <div class="space-y-3" id="ai-list">
+                        </div>
                 </div>
             </div>
         </section>
 
-        <section id="search-pro" class="page-section">
-            <div class="bg-white rounded-3xl shadow-xl p-8 mb-8 border border-slate-200">
-                <h2 class="text-2xl font-black text-slate-800 mb-6 flex items-center">
-                    <i class="fas fa-search-location mr-3 text-indigo-600"></i> Find Professional Providers
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <select id="selected-service" class="p-4 border rounded-2xl bg-slate-50 outline-none focus:ring-2 ring-indigo-200">
-                        <option>Marketing Executives</option>
-                        <option>Tele-Calling</option>
-                        <option>Staff Recruiting</option>
-                        <option>Graphic Designing</option>
-                        <option>Accounting & Legal</option>
-                        <option>Content Writing</option>
-                    </select>
-                    <select id="dist-select" onchange="updateLocalities()" class="p-4 border rounded-2xl bg-slate-50 outline-none">
-                        <option value="all">Kerala (Overall)</option>
-                        <option value="tvm">Thiruvananthapuram</option>
-                        <option value="ekm">Ernakulam</option>
-                    </select>
-                    <select id="loc-select" class="p-4 border rounded-2xl bg-slate-50 outline-none">
-                        <option>Panchayath/Municipality/Overall</option>
-                    </select>
-                    <button onclick="findProviders()" class="bg-indigo-600 text-white p-4 rounded-2xl font-bold hover:bg-black transition shadow-lg">FIND PROVIDERS</button>
-                </div>
+        <section id="tracking" class="page-section">
+            <h2 class="text-2xl font-black mb-6">Daily Staff Tracking</h2>
+            <div class="bg-white rounded-3xl shadow-lg overflow-hidden border">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-100 text-xs font-bold uppercase">
+                        <tr>
+                            <th class="p-4">Executive</th>
+                            <th class="p-4">Route Today</th>
+                            <th class="p-4">Visits</th>
+                            <th class="p-4">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b">
+                            <td class="p-4 font-bold">Arjun K. <span class="text-[10px] bg-blue-100 text-blue-600 px-1 rounded ml-1">Verified</span></td>
+                            <td class="p-4 text-slate-500">Vembayam -> Nedumangad</td>
+                            <td class="p-4 font-bold text-indigo-600">12 Shops</td>
+                            <td class="p-4 text-green-600 font-bold italic">Live Now</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+        </section>
 
-            <div id="results-area" class="hidden">
-                <div class="flex justify-between items-center mb-6 px-2">
-                    <h3 class="text-xl font-bold" id="result-title">Providers Found</h3>
-                    <div class="flex space-x-2">
-                        <button onclick="toggleSelectAll()" class="bg-indigo-50 text-indigo-700 px-4 py-2 rounded-xl text-xs font-bold">Select All Area</button>
-                    </div>
+        <section id="subscription" class="page-section text-center">
+            <h2 class="text-3xl font-black mb-10">Choose Your Plan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-8 rounded-3xl border shadow hover:shadow-2xl transition">
+                    <h3 class="font-bold text-slate-400 uppercase text-xs">Starter</h3>
+                    <p class="text-3xl font-black my-4">Free</p>
+                    <ul class="text-sm space-y-3 mb-8 text-slate-500">
+                        <li>5 Deal Requests / Month</li>
+                        <li>Basic Trust Rate</li>
+                    </ul>
+                    <button class="w-full py-2 border rounded-full font-bold">Current Plan</button>
                 </div>
-                
-                <div id="provider-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    </div>
-
-                <div class="mt-12 bg-indigo-900 text-white p-10 rounded-[3rem] text-center shadow-2xl">
-                    <i class="fas fa-paper-plane text-4xl mb-4 text-yellow-400"></i>
-                    <h3 class="text-2xl font-black">ബൾക്ക് ഡീൽ റിക്വസ്റ്റ് അയക്കുക</h3>
-                    <p class="text-indigo-200 mb-8 max-w-md mx-auto italic">തിരഞ്ഞെടുത്ത എല്ലാ പ്രൊവൈഡർമാർക്കും നിങ്ങളുടെ ഉൽപ്പന്നവും 10% കമ്മീഷൻ ഓഫറും ഒരേസമയം അയക്കാം.</p>
-                    <button onclick="sendBulkRequest()" class="bg-yellow-400 text-indigo-900 px-12 py-4 rounded-full font-black text-xl hover:scale-105 transition shadow-lg">SEND REQUEST TO ALL 🚀</button>
+                <div class="bg-indigo-700 p-8 rounded-3xl border text-white shadow-2xl transform scale-105">
+                    <h3 class="font-bold text-indigo-300 uppercase text-xs">Premium (Recommended)</h3>
+                    <p class="text-3xl font-black my-4">₹499<span class="text-sm font-normal">/mo</span></p>
+                    <ul class="text-sm space-y-3 mb-8">
+                        <li>Unlimited Deal Requests</li>
+                        <li>Verified Badge ✅</li>
+                        <li>Featured in Search</li>
+                    </ul>
+                    <button class="w-full py-2 bg-yellow-400 text-indigo-900 rounded-full font-bold">Upgrade Now</button>
                 </div>
             </div>
         </section>
 
         <section id="profile" class="page-section">
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="md:col-span-1 space-y-6">
-                    <div class="bg-white rounded-3xl p-8 shadow-xl text-center border">
-                        <div class="w-24 h-24 bg-indigo-100 text-indigo-700 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl font-black">B</div>
-                        <h2 class="text-2xl font-bold">Business Hub User</h2>
-                        <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase">Verified Provider</span>
-                        
-                        <div class="mt-6 p-4 bg-yellow-50 rounded-2xl border border-yellow-200">
-                            <p class="text-xs font-bold text-yellow-700 mb-1">COMMUNITY TRUST SCORE</p>
-                            <div class="text-xl text-yellow-500"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                            <p class="text-[10px] text-gray-500 mt-1">4.5 Trust Rate (24 Votes)</p>
-                            <div class="flex justify-center space-x-2 mt-4">
-                                <button onclick="alert('Trust Updated')" class="text-[9px] bg-white border px-2 py-1 rounded font-bold text-green-600 hover:bg-green-50">TRUST 👍</button>
-                                <button onclick="alert('Reported')" class="text-[9px] bg-white border px-2 py-1 rounded font-bold text-red-600 hover:bg-red-50">FAKE 👎</button>
-                            </div>
-                        </div>
-
-                        <div class="mt-6 space-y-2 text-left text-sm text-slate-500">
-                            <div class="flex justify-between border-b py-2"><span>Phone:</span><span class="font-bold text-slate-800 italic">Hidden</span></div>
-                            <div class="flex justify-between border-b py-2"><span>Location:</span><span class="font-bold text-slate-800">Kerala Overall</span></div>
-                        </div>
-                    </div>
+            <div class="max-w-md mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border">
+                <div class="p-8 text-center border-b">
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold">B</div>
+                    <h2 class="text-xl font-bold flex items-center justify-center">
+                        Business User <i class="fas fa-check-circle text-blue-500 ml-2 text-sm" title="Verified Badge"></i>
+                    </h2>
+                    <p class="text-xs text-slate-400 uppercase tracking-widest mt-1">Diamond Member</p>
                 </div>
-
-                <div class="md:col-span-2 bg-white rounded-3xl shadow-xl p-8 border">
-                    <h3 class="text-xl font-bold mb-6 flex justify-between items-center">
-                        <span>Work Portfolio / Samples</span>
-                        <button class="text-xs text-indigo-600 bg-indigo-50 px-3 py-1 rounded">Add New Sample</button>
-                    </h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="aspect-video bg-slate-100 rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-200 group hover:border-indigo-400 cursor-pointer">
-                            <i class="fas fa-image text-slate-300 text-3xl group-hover:text-indigo-400 mb-2 transition"></i>
-                            <p class="text-[10px] text-slate-400 font-bold uppercase">Design Sample 1</p>
-                        </div>
-                        <div class="aspect-video bg-slate-100 rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-slate-200 group hover:border-indigo-400 cursor-pointer">
-                            <i class="fas fa-file-alt text-slate-300 text-3xl group-hover:text-indigo-400 mb-2 transition"></i>
-                            <p class="text-[10px] text-slate-400 font-bold uppercase">Writing Sample 2</p>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 border-t pt-8">
-                        <h3 class="text-xl font-bold mb-4">Past Deals Done</h3>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-xs font-bold text-indigo-700">#1</div>
-                                    <div><p class="font-bold text-sm">Product Sales (Kollam)</p><p class="text-[10px] text-gray-400">Fixed 10% Commission</p></div>
-                                </div>
-                                <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded uppercase">Completed</span>
-                            </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-sm mb-4 italic text-indigo-600">Client Reviews (5)</h3>
+                    <div class="space-y-4">
+                        <div class="bg-slate-50 p-3 rounded-xl">
+                            <p class="text-xs font-bold">Sanoop S.</p>
+                            <p class="text-[11px] text-slate-500 italic">"മികച്ച പ്രൊഡക്റ്റും കൃത്യമായ പേയ്‌മെന്റും. 10% കമ്മീഷൻ കൃത്യമായി ലഭിച്ചു."</p>
+                            <div class="text-[9px] text-yellow-500 mt-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         </div>
                     </div>
                 </div>
@@ -175,77 +143,58 @@
 
     </div>
 
-    <a href="https://wa.me/yournumber" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition z-[100] text-2xl">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <div id="chat-box" class="fixed bottom-6 right-6 w-72 bg-white rounded-2xl shadow-2xl overflow-hidden border hidden z-[200]">
+        <div class="bg-indigo-700 p-3 text-white flex justify-between items-center">
+            <span class="text-xs font-bold italic"><i class="fas fa-comments mr-2"></i>In-built Chat</span>
+            <button onclick="toggleChat()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="h-48 p-4 text-[11px] space-y-2 overflow-y-auto bg-slate-50">
+            <div class="bg-indigo-100 p-2 rounded-lg w-3/4">നമസ്കാരം, എനിക്ക് നിങ്ങളുടെ ഡീൽ താല്പര്യമുണ്ട്.</div>
+            <div class="bg-white border p-2 rounded-lg w-3/4 ml-auto text-right">തീർച്ചയായും, നമുക്ക് നാളെ സംസാരിക്കാം.</div>
+        </div>
+        <div class="p-2 border-t flex">
+            <input type="text" placeholder="Type here..." class="flex-grow text-xs p-1 outline-none">
+            <button class="text-indigo-600 px-2"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    
+    <button onclick="toggleChat()" class="fixed bottom-6 right-6 bg-indigo-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-xl z-[150] hover:scale-110 transition">
+        <i class="fas fa-comment-dots"></i>
+    </button>
 
     <script>
-        const localData = {
-            'tvm': ['District Overall', 'Vembayam', 'Nedumangad', 'Attingal', 'Neyyattinkara'],
-            'ekm': ['District Overall', 'Kochi Corp', 'Aluva', 'Kalamassery', 'Muvattupuzha'],
-            'all': ['Kerala Overall']
-        };
-
         function showPage(pageId) {
             document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active-section'));
             document.getElementById(pageId).classList.add('active-section');
-            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        function openServiceSearch(serviceName) {
-            document.getElementById('selected-service').value = serviceName;
-            showPage('search-pro');
+        function toggleChat() {
+            const chat = document.getElementById('chat-box');
+            chat.classList.toggle('hidden');
         }
 
-        function updateLocalities() {
-            const dist = document.getElementById('dist-select').value;
-            const locSelect = document.getElementById('loc-select');
-            locSelect.innerHTML = '';
-            localData[dist].forEach(loc => {
-                const opt = document.createElement('option');
-                opt.value = loc; opt.innerText = loc;
-                locSelect.appendChild(opt);
-            });
-        }
-
-        function findProviders() {
-            const service = document.getElementById('selected-service').value;
-            const loc = document.getElementById('loc-select').value;
-            document.getElementById('result-title').innerText = `${loc} ലുള്ള ${service} Providers`;
-            document.getElementById('results-area').classList.remove('hidden');
-
-            const grid = document.getElementById('provider-grid');
-            grid.innerHTML = ''; 
-
-            for(let i=1; i<=6; i++) {
-                grid.innerHTML += `
-                    <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-700 font-black">P${i}</div>
-                            <input type="checkbox" class="w-5 h-5 accent-indigo-600 prov-cb" checked>
-                        </div>
-                        <h4 class="font-bold text-slate-800">Professional Provider #${i}</h4>
-                        <p class="text-xs text-indigo-600 font-bold mb-4 uppercase tracking-tighter">${service}</p>
-                        <div class="flex items-center space-x-2 text-yellow-500 text-xs mb-6">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                            <span class="text-slate-400 font-medium">(4.5 Trust Rate)</span>
-                        </div>
-                        <button onclick="alert('Deal Proposed to Provider #${i}!')" class="w-full bg-slate-100 text-slate-800 py-3 rounded-xl font-bold hover:bg-indigo-600 hover:text-white transition">Proposed Deal</button>
+        function runAIMatch() {
+            const name = document.getElementById('p-name').value;
+            if(!name) { alert("പേര് നൽകുക"); return; }
+            
+            const aiBox = document.getElementById('ai-results');
+            aiBox.classList.remove('hidden');
+            const aiList = document.getElementById('ai-list');
+            aiList.innerHTML = '<p class="text-[10px] animate-pulse italic">AI പ്രൊവൈഡർമാരെ തിരയുന്നു...</p>';
+            
+            setTimeout(() => {
+                aiBox.classList.remove('animate-pulse');
+                aiList.innerHTML = `
+                    <div class="p-3 bg-white/10 rounded-xl border border-white/20">
+                        <p class="text-xs font-bold">അർജുൻ കെ. (98% Match)</p>
+                        <p class="text-[9px]">നേരത്തെ സമാനമായ 15 പ്രൊഡക്റ്റുകൾ വിറ്റിട്ടുണ്ട്.</p>
+                    </div>
+                    <div class="p-3 bg-white/10 rounded-xl border border-white/20">
+                        <p class="text-xs font-bold">സനൂപ് എസ്. (92% Match)</p>
+                        <p class="text-[9px]">വെമ്പായം ഏരിയയിൽ മികച്ച ട്രാക്ക് റെക്കോർഡ്.</p>
                     </div>
                 `;
-            }
-            window.scrollTo({top: document.getElementById('results-area').offsetTop - 100, behavior: 'smooth'});
-        }
-
-        function toggleSelectAll() {
-            const cbs = document.querySelectorAll('.prov-cb');
-            const currentState = cbs[0].checked;
-            cbs.forEach(cb => cb.checked = !currentState);
-        }
-
-        function sendBulkRequest() {
-            alert("നിങ്ങളുടെ 10% കമ്മീഷൻ ഡീൽ റിക്വസ്റ്റ് സെലക്ട് ചെയ്ത എല്ലാ സർവീസ് പ്രൊവൈഡർമാർക്കും അയച്ചിട്ടുണ്ട്. അവർ ഉടൻ ബന്ധപ്പെടും!");
-            showPage('home');
+            }, 2000);
         }
     </script>
 </body>
