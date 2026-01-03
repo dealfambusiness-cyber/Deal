@@ -10,6 +10,8 @@
         .page-section { display: none; }
         .active-section { display: block; animation: fadeIn 0.4s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .wa-float { animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-900">
@@ -22,9 +24,10 @@
             </div>
             <div class="hidden lg:flex space-x-5 text-[10px] font-bold uppercase tracking-widest">
                 <button onclick="showPage('main-home')">Home</button>
-                <button onclick="showPage('business-home')">Business</button>
-                <button onclick="showPage('job-home')">Jobs</button>
+                <button onclick="showPage('business-home')">Business Services</button>
+                <button onclick="showPage('job-home')">Job Portal</button>
                 <button onclick="showPage('store-search')">Store (Sourcing)</button>
+                <button onclick="showPage('tracking')">Tracking</button>
                 <button onclick="showPage('profile')" class="bg-yellow-400 text-indigo-950 px-3 py-1 rounded-full">My Account</button>
             </div>
         </div>
@@ -32,159 +35,186 @@
 
     <div class="container mx-auto px-4 py-6 max-w-6xl">
 
-        <section id="main-home" class="page-section active-section">
-            <div class="text-center py-12">
-                <h1 class="text-4xl font-black mb-12 text-slate-800 tracking-tight">എങ്ങനെയാണ് ഞങ്ങൾ നിങ്ങളെ സഹായിക്കേണ്ടത്?</h1>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    <div onclick="showPage('business-home')" class="bg-white p-10 rounded-[2.5rem] shadow-2xl border-b-8 border-indigo-600 cursor-pointer hover:scale-105 transition transform">
-                        <i class="fas fa-chart-line text-5xl text-indigo-600 mb-6"></i>
-                        <h2 class="text-2xl font-black uppercase text-indigo-900">Business</h2>
-                        <p class="text-slate-500 mt-2 text-xs font-medium italic">Marketing, Designing, AI Matching...</p>
-                    </div>
-                    <div onclick="showPage('job-home')" class="bg-white p-10 rounded-[2.5rem] shadow-2xl border-b-8 border-yellow-500 cursor-pointer hover:scale-105 transition transform">
-                        <i class="fas fa-user-friends text-5xl text-yellow-500 mb-6"></i>
-                        <h2 class="text-2xl font-black uppercase text-slate-800">Job</h2>
-                        <p class="text-slate-500 mt-2 text-xs font-medium italic">Staff Wanted & Job Search...</p>
-                    </div>
-                    <div onclick="showPage('store-search')" class="bg-white p-10 rounded-[2.5rem] shadow-2xl border-b-8 border-green-500 cursor-pointer hover:scale-105 transition transform">
-                        <i class="fas fa-store text-5xl text-green-500 mb-6"></i>
-                        <h2 class="text-2xl font-black uppercase text-slate-800">Store</h2>
-                        <p class="text-slate-500 mt-2 text-xs font-medium italic">ഉൽപ്പന്നങ്ങൾ കണ്ടെത്തൂ (Sourcing)</p>
-                    </div>
+        <section id="main-home" class="page-section active-section text-center py-10">
+            <h1 class="text-4xl font-black mb-12 text-slate-800">എങ്ങനെയാണ് ഞങ്ങൾ സഹായിക്കേണ്ടത്?</h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div onclick="showPage('business-home')" class="bg-white p-10 rounded-[2.5rem] shadow-2xl border-b-8 border-indigo-600 cursor-pointer hover:scale-105 transition">
+                    <i class="fas fa-chart-line text-5xl text-indigo-600 mb-6"></i>
+                    <h2 class="text-2xl font-black uppercase text-indigo-900">Business</h2>
+                    <p class="text-slate-500 mt-2 text-xs italic">Marketing, AI Match, 10% Commission...</p>
                 </div>
-            </div>
-        </section>
-
-        <section id="store-search" class="page-section">
-            <div class="bg-white p-8 rounded-3xl shadow-xl border mb-10 text-center">
-                <h2 class="text-2xl font-black mb-4">ഉൽപ്പന്നങ്ങൾ കണ്ടെത്താം</h2>
-                <p class="text-sm text-slate-500 mb-8 italic">നിങ്ങളുടെ കടയിലേക്ക് എന്ത് ഉൽപ്പന്നമാണ് വേണ്ടത്? AI വഴി മികച്ച ലാഭം തരുന്നവരെ കണ്ടെത്താം.</p>
-                <div class="max-w-2xl mx-auto flex bg-slate-100 rounded-full p-2 border focus-within:border-indigo-500 transition">
-                    <input type="text" id="store-query" placeholder="ഉദാ: തേയില, വെളിച്ചെണ്ണ, സോപ്പ്..." class="flex-grow bg-transparent px-6 outline-none font-bold">
-                    <button onclick="runStoreAI()" class="bg-green-600 text-white px-8 py-3 rounded-full font-black shadow-lg hover:bg-black transition">AI MATCH 🤖</button>
+                <div onclick="showPage('job-home')" class="bg-white p-10 rounded-[2.5rem] shadow-2xl border-b-8 border-yellow-500 cursor-pointer hover:scale-105 transition">
+                    <i class="fas fa-user-friends text-5xl text-yellow-500 mb-6"></i>
+                    <h2 class="text-2xl font-black uppercase text-slate-800">Job</h2>
+                    <p class="text-slate-500 mt-2 text-xs italic">Staff Wanted & Job Search...</p>
                 </div>
-            </div>
-
-            <div id="store-results" class="hidden">
-                <div class="flex justify-between items-center mb-6 px-2">
-                    <h3 class="font-bold text-lg" id="store-res-title">Matching Suppliers</h3>
-                    <span class="text-[10px] bg-green-100 text-green-700 font-bold px-3 py-1 rounded-full animate-pulse">AI Optimized Results</span>
+                <div onclick="showPage('store-search')" class="bg-white p-10 rounded-[2.5rem] shadow-2xl border-b-8 border-green-500 cursor-pointer hover:scale-105 transition">
+                    <i class="fas fa-store text-5xl text-green-500 mb-6"></i>
+                    <h2 class="text-2xl font-black uppercase text-slate-800">Store</h2>
+                    <p class="text-slate-500 mt-2 text-xs italic">ഉൽപ്പന്നങ്ങൾ കണ്ടെത്താം (Profit Sourcing)</p>
                 </div>
-                
-                <div id="store-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-                    </div>
             </div>
         </section>
 
         <section id="business-home" class="page-section">
-            <h2 class="text-2xl font-black mb-8 border-b pb-4">Business Services</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-10 text-center text-[10px] font-bold uppercase">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border hover:border-indigo-600 cursor-pointer"><i class="fas fa-bullseye text-2xl text-red-500 mb-2"></i><br>Marketing</div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border hover:border-indigo-600 cursor-pointer"><i class="fas fa-headset text-2xl text-indigo-500 mb-2"></i><br>Tele-Calling</div>
+            <h2 class="text-2xl font-black mb-6">Business Services</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10 text-center text-[10px] font-bold uppercase">
+                <div onclick="openServiceSearch('Marketing')" class="bg-white p-6 rounded-2xl shadow-sm border hover:border-indigo-600 cursor-pointer"><i class="fas fa-bullseye text-2xl text-red-500 mb-2"></i><br>Marketing</div>
+                <div onclick="openServiceSearch('Tele-Calling')" class="bg-white p-6 rounded-2xl shadow-sm border hover:border-indigo-600 cursor-pointer"><i class="fas fa-headset text-2xl text-indigo-500 mb-2"></i><br>Tele-Calling</div>
+                <div onclick="openServiceSearch('Designing')" class="bg-white p-6 rounded-2xl shadow-sm border hover:border-indigo-600 cursor-pointer"><i class="fas fa-palette text-2xl text-pink-500 mb-2"></i><br>Designing</div>
+                <div onclick="openServiceSearch('Accounting')" class="bg-white p-6 rounded-2xl shadow-sm border hover:border-indigo-600 cursor-pointer"><i class="fas fa-calculator text-2xl text-amber-500 mb-2"></i><br>Accounting</div>
+                <div onclick="openServiceSearch('Writing')" class="bg-white p-6 rounded-2xl shadow-sm border hover:border-indigo-600 cursor-pointer"><i class="fas fa-pen-nib text-2xl text-blue-500 mb-2"></i><br>Writing</div>
+                <div onclick="openServiceSearch('Recruiting')" class="bg-white p-6 rounded-2xl shadow-sm border hover:border-indigo-600 cursor-pointer"><i class="fas fa-users text-2xl text-green-500 mb-2"></i><br>Recruiting</div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <div class="bg-white p-8 rounded-3xl shadow-xl border">
+                    <h3 class="font-black text-xl mb-6 italic text-indigo-700">AI Matchmaking & Post</h3>
+                    <div class="space-y-4">
+                        <input type="text" id="biz-prod-input" placeholder="ഉൽപ്പന്നത്തിന്റെ പേര്..." class="w-full p-4 border rounded-2xl bg-slate-50 outline-none">
+                        <div class="p-4 bg-yellow-50 rounded-2xl border border-yellow-200 text-[10px] text-slate-600">
+                            <label class="flex items-center space-x-2"><input type="checkbox" checked> <span>Digital Contract: 10% കമ്മീഷൻ അംഗീകരിക്കുന്നു.</span></label>
+                        </div>
+                        <button onclick="runBusinessAI()" class="w-full bg-indigo-700 text-white py-4 rounded-2xl font-black">RUN AI MATCHMAKING 🤖</button>
+                    </div>
                 </div>
-            </section>
+                <div id="biz-ai-res" class="hidden bg-slate-900 text-white p-8 rounded-3xl shadow-xl italic text-sm">AI നിർദ്ദേശിക്കുന്നവർ വരുന്നു...</div>
+            </div>
+        </section>
+
+        <section id="search-area" class="page-section">
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border mb-10">
+                <h3 class="font-black text-xl mb-6"><i class="fas fa-map-marker-alt mr-2 text-red-500"></i> ലൊക്കേഷൻ തിരഞ്ഞെടുക്കുക</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <select id="dist-sel" onchange="updateLocs()" class="p-4 bg-slate-50 border rounded-2xl outline-none"><option value="all">Kerala Overall</option><option value="tvm">Thiruvananthapuram</option><option value="ekm">Ernakulam</option></select>
+                    <select id="loc-sel" class="p-4 bg-slate-50 border rounded-2xl outline-none"><option>District Overall</option></select>
+                    <button onclick="findProvidersNow()" class="bg-indigo-700 text-white font-bold rounded-2xl py-4">FIND NOW</button>
+                </div>
+            </div>
+            <div id="res-grid" class="hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8" id="p-cards-area"></div>
+                <button onclick="sendBulk()" class="w-full bg-indigo-950 text-white py-4 rounded-2xl font-black uppercase">Send Deal Request to All 🚀</button>
+            </div>
+        </section>
 
         <section id="job-home" class="page-section">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div onclick="showPage('staff-wanted')" class="bg-indigo-900 text-white p-12 rounded-[2.5rem] shadow-2xl text-center cursor-pointer">
-                    <i class="fas fa-building text-4xl mb-4 text-yellow-400"></i>
-                    <h3 class="text-xl font-bold uppercase">Staff Wanted</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto py-10">
+                <div onclick="showPage('staff-wanted')" class="bg-indigo-900 text-white p-12 rounded-[2.5rem] shadow-2xl cursor-pointer hover:bg-black transition text-center">
+                    <i class="fas fa-building text-5xl mb-4 text-yellow-400"></i>
+                    <h3 class="text-2xl font-bold">Staff wanted for my company</h3>
                 </div>
-                <div onclick="showPage('need-job')" class="bg-yellow-400 text-indigo-950 p-12 rounded-[2.5rem] shadow-2xl text-center cursor-pointer">
-                    <i class="fas fa-user-md text-4xl mb-4"></i>
-                    <h3 class="text-xl font-bold uppercase">I Need a Job</h3>
+                <div onclick="showPage('need-job')" class="bg-yellow-400 text-indigo-950 p-12 rounded-[2.5rem] shadow-2xl cursor-pointer hover:bg-yellow-500 transition text-center">
+                    <i class="fas fa-user-md text-5xl mb-4"></i>
+                    <h3 class="text-2xl font-bold">I need a job</h3>
                 </div>
             </div>
         </section>
 
         <section id="staff-wanted" class="page-section">
-            <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl border max-w-xl mx-auto">
-                <h2 class="text-xl font-black mb-6 italic">Post Vacancy</h2>
-                <input type="text" id="j-title" placeholder="Job Title" class="w-full p-4 bg-slate-50 rounded-2xl border mb-4">
-                <button onclick="sendWA('want')" class="w-full bg-indigo-950 text-white py-4 rounded-2xl font-black">SEND DEAL REQUEST 🚀</button>
+            <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl border max-w-xl mx-auto">
+                <h2 class="text-2xl font-black mb-6 text-indigo-900">Post Vacancy</h2>
+                <input type="text" id="j-want-title" placeholder="ജോലിയുടെ പേര്..." class="w-full p-4 border rounded-2xl bg-slate-50 mb-4">
+                <button onclick="sendDealWA('want')" class="w-full bg-indigo-700 text-white py-4 rounded-2xl font-black">FIND CANDIDATES 🚀</button>
             </div>
         </section>
 
         <section id="need-job" class="page-section">
-            <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl border max-w-xl mx-auto">
-                <h2 class="text-xl font-black mb-6 italic">Job Seeker Profile</h2>
-                <input type="text" id="s-title" placeholder="Position Desired" class="w-full p-4 bg-slate-50 rounded-2xl border mb-4">
-                <button onclick="sendWA('need')" class="w-full bg-yellow-500 text-indigo-950 py-4 rounded-2xl font-black">FIND MATCH 🚀</button>
+            <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl border max-w-xl mx-auto">
+                <h2 class="text-2xl font-black mb-6 text-yellow-600">Register for Job</h2>
+                <input type="text" id="j-need-cat" placeholder="ഏത് ജോലിയാണ് വേണ്ടത്?" class="w-full p-4 border rounded-2xl bg-slate-50 mb-4">
+                <button onclick="sendDealWA('need')" class="w-full bg-yellow-500 text-indigo-900 py-4 rounded-2xl font-black">MATCH JOBS 🚀</button>
+            </div>
+        </section>
+
+        <section id="store-search" class="page-section">
+            <div class="bg-white p-8 rounded-3xl shadow-xl border mb-10 text-center">
+                <h2 class="text-2xl font-black mb-4">Store Profit Sourcing</h2>
+                <div class="max-w-xl mx-auto flex bg-slate-100 rounded-full p-2 border focus-within:border-green-500 transition">
+                    <input type="text" id="st-query" placeholder="ഉൽപ്പന്നം തിരയുക..." class="flex-grow bg-transparent px-6 outline-none font-bold">
+                    <button onclick="runStoreMatch()" class="bg-green-600 text-white px-8 py-3 rounded-full font-black">AI MATCH 🤖</button>
+                </div>
+            </div>
+            <div id="st-res" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        </section>
+
+        <section id="tracking" class="page-section">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border">
+                <div class="bg-indigo-700 p-6 text-white font-bold italic">Staff Performance Tracking</div>
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-slate-50 font-bold uppercase text-[10px]"><tr><th class="p-4">Staff</th><th class="p-4">Route</th><th class="p-4">Visits</th><th class="p-4">Status</th></tr></thead>
+                    <tbody><tr class="border-b"><td class="p-4 font-bold">അർജുൻ കെ.</td><td class="p-4 text-slate-500">Vembayam Area</td><td class="p-4 font-black text-indigo-600">12</td><td class="p-4 text-green-600 font-bold italic">Active</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="profile" class="page-section">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-3xl shadow-xl border text-center">
+                    <div class="w-20 h-20 bg-indigo-100 text-indigo-700 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-black">B</div>
+                    <h2 class="text-xl font-bold">Business Hub <i class="fas fa-check-circle text-blue-500 text-sm"></i></h2>
+                    <div class="mt-4 bg-yellow-50 p-4 rounded-xl border border-yellow-100">
+                        <p class="text-[9px] font-bold text-yellow-700 uppercase">Trust Rate</p>
+                        <div class="text-yellow-500 my-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <p class="text-[10px] text-gray-400 italic">Hidden Contact (Privacy)</p>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-xl border md:col-span-2">
+                    <h3 class="font-bold mb-4 text-sm italic">Portfolio & Reviews</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-6"><div class="aspect-video bg-slate-50 border-2 border-dashed rounded-xl flex items-center justify-center text-slate-300">Sample 1</div><div class="aspect-video bg-slate-50 border-2 border-dashed rounded-xl flex items-center justify-center text-slate-300">Sample 2</div></div>
+                    <div class="p-3 bg-indigo-50 rounded-xl text-[11px] italic">"മികച്ച സേവനം, 10% കമ്മീഷൻ ലഭിച്ചു. (Client Review)"</div>
+                </div>
             </div>
         </section>
 
     </div>
 
-    <div id="wa-alert" class="fixed top-20 right-4 bg-white border-l-4 border-green-500 p-4 shadow-2xl rounded-xl z-[500] hidden flex items-center space-x-3">
+    <div id="wa-popup" class="fixed top-20 right-4 bg-white border-l-4 border-green-500 p-4 shadow-2xl rounded-xl z-[900] hidden flex items-center space-x-3">
         <i class="fab fa-whatsapp text-2xl text-green-500"></i>
-        <div><p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">WhatsApp Deal Alert</p><p class="text-xs font-bold" id="wa-txt">New match found.</p></div>
+        <div><p class="text-[9px] font-bold text-slate-400">WhatsApp Alert</p><p class="text-xs font-bold" id="wa-msg">New match found.</p></div>
     </div>
 
     <script>
-        function showPage(id) {
-            document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active-section'));
-            document.getElementById(id).classList.add('active-section');
-            window.scrollTo({top: 0, behavior: 'smooth'});
+        const localData = { 'tvm': ['District Overall', 'Vembayam', 'Nedumangad'], 'ekm': ['District Overall', 'Kochi', 'Aluva'], 'all': ['Kerala Overall'] };
+        function showPage(id) { document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active-section')); document.getElementById(id).classList.add('active-section'); window.scrollTo({top:0, behavior:'smooth'}); }
+        function updateLocs() { const d = document.getElementById('dist-sel').value; const l = document.getElementById('loc-sel'); l.innerHTML = ''; localData[d].forEach(x => { const o = document.createElement('option'); o.value = x; o.innerText = x; l.appendChild(o); }); }
+        
+        function findProvidersNow() {
+            document.getElementById('res-grid').classList.remove('hidden');
+            const g = document.getElementById('p-cards-area'); g.innerHTML = '';
+            for(let i=1; i<=3; i++) {
+                g.innerHTML += `<div class="bg-white p-5 rounded-3xl border flex justify-between shadow-sm"><div><p class="font-bold text-sm">Provider #${i}</p><p class="text-[10px] text-indigo-600 font-bold">Active</p></div><input type="checkbox" checked class="w-5 h-5 accent-indigo-600 prov-cb"></div>`;
+            }
         }
 
-        // AI Matchmaking for Store Owners
-        function runStoreAI() {
-            const query = document.getElementById('store-query').value;
-            if(!query) { alert("തിരയേണ്ട ഉൽപ്പന്നത്തിന്റെ പേര് നൽകുക!"); return; }
+        function runBusinessAI() {
+            const b = document.getElementById('biz-ai-res'); b.classList.remove('hidden'); b.innerHTML = '<p class="animate-pulse">AI തിരയുന്നു...</p>';
+            setTimeout(() => { b.innerHTML = '<p class="text-yellow-400 font-bold mb-2">AI Match Found:</p><p class="text-xs italic">അർജുൻ കെ. - 98% Match (ഈ പ്രൊഡക്റ്റ് വിൽക്കാൻ ഏറ്റവും അനുയോജ്യൻ)</p>'; }, 1500);
+        }
 
-            const resArea = document.getElementById('store-results');
-            const grid = document.getElementById('store-grid');
-            resArea.classList.remove('hidden');
-            grid.innerHTML = '<p class="col-span-full text-center italic animate-pulse">AI ഏറ്റവും മികച്ച ലാഭം തരുന്ന ഉത്പാദകരെ തിരയുന്നു...</p>';
-
+        function runStoreMatch() {
+            const s = document.getElementById('st-res'); s.classList.remove('hidden'); s.innerHTML = '<p class="col-span-full italic animate-pulse">AI മികച്ച ലാഭം നൽകുന്നവരെ കണ്ടെത്തുന്നു...</p>';
             setTimeout(() => {
-                grid.innerHTML = '';
-                const suppliers = [
-                    { name: 'കേരള ഓർഗാനിക്സ്', profit: '30% Margin', price: '₹140/Unit', score: '98%' },
-                    { name: 'ടോപ് ലിങ്ക് ഇൻഡസ്ട്രീസ്', profit: '25% Margin', price: '₹152/Unit', score: '92%' },
-                    { name: 'ലോക്കൽ ഫാം കളക്ടീവ്', profit: '35% Margin', price: '₹130/Unit', score: '85%' }
-                ];
-
-                suppliers.forEach(s => {
-                    grid.innerHTML += `
-                        <div class="bg-white p-6 rounded-[2rem] border-2 border-slate-50 shadow-sm hover:border-green-500 transition group">
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="text-[9px] bg-green-100 text-green-700 font-black px-2 py-1 rounded-full">${s.score} AI Match</span>
-                                <i class="fas fa-check-circle text-blue-500 text-xs"></i>
-                            </div>
-                            <h4 class="font-black text-slate-800 text-lg">${s.name}</h4>
-                            <p class="text-xs text-slate-400 mb-4 tracking-tighter italic">പാലക്കാട് യൂണിറ്റ് (Verified)</p>
-                            
-                            <div class="bg-green-50 p-4 rounded-2xl mb-6">
-                                <p class="text-[10px] font-bold text-green-700 uppercase mb-1">നിങ്ങൾക്ക് ലഭിക്കുന്ന ലാഭം:</p>
-                                <p class="text-2xl font-black text-green-700 tracking-tighter">${s.profit}</p>
-                                <p class="text-[9px] text-green-600 mt-1">ബൾക്ക് പ്രൈസ്: ${s.price}</p>
-                            </div>
-                            
-                            <button onclick="sendStoreDeal('${s.name}')" class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold text-xs uppercase hover:bg-green-600 transition tracking-widest">Send Deal Request 🚀</button>
-                        </div>
-                    `;
-                });
-                window.scrollTo({top: resArea.offsetTop - 100, behavior: 'smooth'});
-            }, 2000);
+                s.innerHTML = `
+                    <div class="bg-white p-6 rounded-3xl border shadow hover:border-green-500 transition">
+                        <p class="text-[10px] bg-green-100 text-green-700 font-bold px-2 py-1 rounded-full w-max mb-2">95% AI Match</p>
+                        <h4 class="font-bold">Organic Kerala Collective</h4>
+                        <div class="my-4 bg-green-50 p-4 rounded-xl text-green-700 font-black text-2xl tracking-tighter">35% Margin</div>
+                        <button onclick="sendDealWA('store')" class="w-full bg-slate-900 text-white py-2 rounded-xl text-xs font-bold">SEND DEAL REQUEST 🚀</button>
+                    </div>`;
+            }, 1500);
         }
 
-        function sendStoreDeal(supplier) {
-            document.getElementById('wa-txt').innerText = `${supplier}-ലേക്ക് നിങ്ങളുടെ ഡീൽ റിക്വസ്റ്റ് അയച്ചു!`;
-            const alert = document.getElementById('wa-alert');
-            alert.classList.remove('hidden');
-            setTimeout(() => { 
-                alert.classList.add('hidden'); 
-                window.alert(`വിജയകരമായി ഡീൽ റിക്വസ്റ്റ് അയച്ചു. ${supplier} ഉടൻ നിങ്ങളെ വാട്സാപ്പ് വഴി ബന്ധപ്പെടും.`);
-            }, 3000);
+        function sendDealWA(type) {
+            let t = "New Match Alert!";
+            if(type === 'want') t = "ജോലി ആഗ്രഹിക്കുന്നവർക്ക് മെസ്സേജ് അയച്ചു!";
+            if(type === 'need') t = "കമ്പനികൾക്ക് പ്രൊഫൈൽ മെസ്സേജ് അയച്ചു!";
+            if(type === 'store') t = "സപ്ലയർക്ക് ഡീൽ മെസ്സേജ് അയച്ചു!";
+            document.getElementById('wa-msg').innerText = t;
+            const p = document.getElementById('wa-popup'); p.classList.remove('hidden');
+            setTimeout(() => { p.classList.add('hidden'); alert("Request Sent Successfully!"); showPage('main-home'); }, 3000);
         }
 
-        function sendWA(type) {
-            const txt = (type === 'want') ? "ഉദ്യോഗാർത്ഥികൾക്ക് വാട്സാപ്പ് നോട്ടിഫിക്കേഷൻ അയച്ചു!" : "കമ്പനികൾക്ക് നിങ്ങളുടെ പ്രൊഫൈൽ മെസ്സേജ് അയച്ചു!";
-            document.getElementById('wa-txt').innerText = txt;
-            document.getElementById('wa-alert').classList.remove('hidden');
-            setTimeout(() => { document.getElementById('wa-alert').classList.add('hidden'); showPage('main-home'); }, 3000);
-        }
+        function openServiceSearch(s) { showPage('search-area'); alert(s + " കണ്ടെത്താൻ ലൊക്കേഷൻ സെലക്ട് ചെയ്യുക."); }
     </script>
 </body>
 </html>
